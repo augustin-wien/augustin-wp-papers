@@ -21,17 +21,14 @@ function augustin_create_group_and_add_as_a_member(
         if ($group = Groups_Group::read_by_name($user_groups[$i])) {
             $is_a_member = Groups_User_Group::read($user->ID, $group->group_id);
             if (!$is_a_member) {
-                print_r("add user " . $user->ID . " to group\n");
                 Groups_User_Group::create(array('user_id' => $user->ID, 'group_id' => $group->group_id));
             }
         } else {
-            print_r("create group\n");
             $group = Groups_Group::create([
                 'name' => $user_groups[$i],
                 'description' => 'An automatically created keycloak group' . $user_groups[$i],
             ]);
             if (!$group) {
-                print_r("group not created\n");
                 return;
             }
             Groups_User_Group::create(array('user_id' => $user_id, 'group_id' => $group));

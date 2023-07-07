@@ -20,7 +20,6 @@
 define( 'AUGUSTIN_VERSION', '0.0.1' );
 
 
-
 if ( !defined( 'AUGUSTIN_DIR' ) ) {
 	define( 'AUGUSTIN_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 }
@@ -39,4 +38,5 @@ if ( !defined( 'AUGUSTIN_PDF_PROCESSING' ) ) {
     require_once AUGUSTIN_PDF_PROCESSING;
 }
 
-require_once AUGUSTIN_DIR . '/includes/init.php';
+require_once( AUGUSTIN_DIR . '/includes/init.php');
+add_action('init', 'augustin_paper_init');
