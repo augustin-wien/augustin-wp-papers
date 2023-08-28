@@ -23,11 +23,7 @@ function test_init()
     echo "<p>Bitte laden Sie hier die Zeitung als PDF hoch.</p>";
 ?>
     <div class="wrap">
-    <form id="upload_form" action="/wp-content/plugins/augustin-wp-papers/includes/upload.php" enctype="multipart/form-data" method="post" target="messages">
-        <p><input name="upload" id="upload" type="file" accept="pdf" /></p>
-        <p><input id="btnSubmit" type="submit" value="Upload newspaper as pdf" /></p>
-        <iframe name="messages" id="messages" width="100%" height="500px"></iframe>
-      </form>
+        <iframe src="http://localhost:8070/" width="100%" height="500px"></iframe>
     </div>
 <?php
 }
