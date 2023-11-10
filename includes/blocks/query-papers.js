@@ -1,3 +1,22 @@
+function register_newspapers_articles_block(){
+  const { registerBlockType } = wp.blocks;
+     
+  registerBlockType('augustin/newspaper-articles', {
+    title: 'Newspaper Articles',
+    category: 'common',
+    icon: 'smiley',
+    description: 'Learning in progress',
+    keywords: ['example', 'test'],
+    edit: () => { 
+      return "<div>:)</div>" 
+    },
+    save: () => { 
+      return "<div>:)</div>"
+    }
+  });
+}
+
+
 wp.domReady(function () {
   console.log('Registering block variation: augustin/papers-list');
   wp.blocks.registerBlockVariation('core/query', {
@@ -17,9 +36,12 @@ wp.domReady(function () {
         postType: 'post',
         category: function () {
             console.log("blub");
-          return   'Augustin';
+          return   'magazin-1';
         }
       },
     },
   });
+  register_newspapers_articles_block();
 });
+
+
