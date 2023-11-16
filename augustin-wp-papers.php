@@ -41,18 +41,31 @@ function prefix_editor_assets()
 {
 	wp_enqueue_script(
 		'augustin-query-papers',
-		plugins_url('/includes/blocks/query-papers.js', __FILE__),
+		plugins_url('/includes/blocks/query-papers/query-papers.js', __FILE__),
 		array('wp-blocks', 'wp-dom-ready', 'wp-edit-post'),
-		filemtime(plugin_dir_path(__FILE__) . '/includes/blocks/query-papers.js')
+		filemtime(plugin_dir_path(__FILE__) . 'includes/blocks/query-papers/query-papers.js')
 	);
-	wp_enqueue_script(
-		'prefix-block-variations',
-		plugin_dir_path(__FILE__) . 'blocks/query-papers.js',
-		array('jquery'),
-		'',
-		true
-	);
+
 }
 add_action('enqueue_block_editor_assets', 'prefix_editor_assets');
 require_once(AUGUSTIN_DIR . '/includes/init.php');
 add_action('init', 'augustin_paper_init');
+
+
+// Check if the menu exists
+$menu_name   = 'Top Menu';
+$menu_exists = wp_get_nav_menu_object( $menu_name );
+
+// If it doesn't exist, let's create it.
+if ( ! $menu_exists ) {
+    $menu_id = wp_create_nav_menu($menu_name);
+
+	// Set up default menu items
+    wp_update_nav_menu_item( $menu_id, 0, array(
+        'menu-item-title'   =>  __( 'Ausgaben', 'textdomain' ),
+        'menu-item-classes' => 'home',
+        'menu-item-url'     => home_url( '/' ), 
+        'menu-item-status'  => 'publish'
+	) );
+
+}
