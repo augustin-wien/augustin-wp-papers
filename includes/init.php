@@ -60,7 +60,8 @@ function augustin_paper_init()
             'show_admin_column' => true,
             'show_ui' => true,
             'query_var' => true,
-            'rewrite' => true
+            'rewrite' => true,
+            'show_in_rest' => true
         )
     );
     register_taxonomy(
@@ -72,7 +73,8 @@ function augustin_paper_init()
             'show_admin_column' => true,
             'show_ui' => true,
             'query_var' => true,
-            'rewrite' => true
+            'rewrite' => true,
+            'show_in_rest' => true
         )
     );
 
