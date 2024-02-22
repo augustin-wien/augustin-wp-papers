@@ -23,7 +23,7 @@ function test_init()
     echo "<p>Bitte laden Sie hier die Zeitung als PDF hoch.</p>";
 ?>
     <div class="wrap">
-        <iframe src="http://localhost:8070/" width="100%" height="500px"></iframe>
+        <iframe src="<?php echo getenv('AUGUSTIN_PARSER_URL'); ?>" width="100%" height="500px"></iframe>
     </div>
 <?php
 }
